@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
@@ -13,6 +15,18 @@ app.MapPost("/saveProduct", (Product product) =>
     //return product;
     return product.Code + " - " + product.Name; 
 });
+
+app.MapGet("/getProducts", ([FromQuery] string dateStart, [FromQuery] string dateEnd) =>
+{
+    return dateStart + " - " + dateEnd;
+});
+
+app.MapGet("/getProducts/{code}", ([FromRoute] string code) =>
+{
+    return code;
+});
+
+
 
 app.Run();
 
