@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +27,15 @@ app.MapGet("/getProducts/{code}", ([FromRoute] string code) =>
     return code;
 });
 
+/*app.MapGet("/header", ([FromHeader] string headerName) =>
+{
+    return headerName;
+});*/
 
+app.MapGet("/getNameByHeader", (HttpRequest request) =>
+{
+    return request.Headers["headerName"].ToString();
+});
 
 app.Run();
 
