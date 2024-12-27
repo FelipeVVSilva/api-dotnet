@@ -26,3 +26,4 @@ C:\Primeira API .NET\obj\Debug\net9.0\refint\Primeira API .NET.dll
 C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.pdb
 C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.genruntimeconfig.cache
 C:\Primeira API .NET\obj\Debug\net9.0\ref\Primeira API .NET.dll
+C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.sourcelink.json
