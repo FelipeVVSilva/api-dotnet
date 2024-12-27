@@ -1,0 +1,28 @@
+C:\Primeira API .NET\bin\Debug\net9.0\appsettings.Development.json
+C:\Primeira API .NET\bin\Debug\net9.0\appsettings.json
+C:\Primeira API .NET\bin\Debug\net9.0\Primeira API .NET.staticwebassets.endpoints.json
+C:\Primeira API .NET\bin\Debug\net9.0\Primeira API .NET.exe
+C:\Primeira API .NET\bin\Debug\net9.0\Primeira API .NET.deps.json
+C:\Primeira API .NET\bin\Debug\net9.0\Primeira API .NET.runtimeconfig.json
+C:\Primeira API .NET\bin\Debug\net9.0\Primeira API .NET.dll
+C:\Primeira API .NET\bin\Debug\net9.0\Primeira API .NET.pdb
+C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.GeneratedMSBuildEditorConfig.editorconfig
+C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.AssemblyInfoInputs.cache
+C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.AssemblyInfo.cs
+C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.csproj.CoreCompileInputs.cache
+C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.MvcApplicationPartsAssemblyInfo.cache
+C:\Primeira API .NET\obj\Debug\net9.0\scopedcss\bundle\Primeira API .NET.styles.css
+C:\Primeira API .NET\obj\Debug\net9.0\staticwebassets.build.json
+C:\Primeira API .NET\obj\Debug\net9.0\staticwebassets.development.json
+C:\Primeira API .NET\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Primeira API .NET\obj\Debug\net9.0\staticwebassets\msbuild.Primeira API .NET.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Primeira API .NET\obj\Debug\net9.0\staticwebassets\msbuild.Primeira API .NET.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Primeira API .NET\obj\Debug\net9.0\staticwebassets\msbuild.build.Primeira API .NET.props
+C:\Primeira API .NET\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.Primeira API .NET.props
+C:\Primeira API .NET\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.Primeira API .NET.props
+C:\Primeira API .NET\obj\Debug\net9.0\staticwebassets.pack.json
+C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.dll
+C:\Primeira API .NET\obj\Debug\net9.0\refint\Primeira API .NET.dll
+C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.pdb
+C:\Primeira API .NET\obj\Debug\net9.0\Primeira API .NET.genruntimeconfig.cache
+C:\Primeira API .NET\obj\Debug\net9.0\ref\Primeira API .NET.dll
