@@ -11,11 +11,11 @@ app.MapGet("/addHeader", (HttpResponse response) =>
     response.Headers.Add("Teste", "Felipe Veiga");
     return new { id = 1, name = "Felipe Veiga" };
 });
-app.MapPost("/saveProduct", (Product product) =>
+/*app.MapPost("/saveProduct", (Product product) =>
 {
     //return product;
     return product.Code + " - " + product.Name; 
-});
+});*/
 
 app.MapGet("/getProducts", ([FromQuery] string dateStart, [FromQuery] string dateEnd) =>
 {
@@ -38,6 +38,25 @@ app.MapGet("/getNameByHeader", (HttpRequest request) =>
 });
 
 app.Run();
+
+public static class ProductRepository
+{
+    public static List<Product> Products { get; set; }
+
+    public static void Add(Product product)
+    {
+        if(Products == null)
+            Products = new List<Product>();
+
+        Products.Add(product);
+    }
+
+    public static Product GetByCode(string code)
+    {
+        return Products.First(p => p.Code == code);
+    }
+
+}
 
 public class Product
 {
