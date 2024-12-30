@@ -40,23 +40,28 @@ app.MapGet("/getNameByHeader", (HttpRequest request) =>
 app.MapPost("/products", (Product product) =>
 {
     ProductRepository.Add(product);
+    return Results.Created("/products/" + product.Code, product.Code);
 });
 
 app.MapGet("/products/{code}", ([FromRoute] string code) =>
 {
     Product prod = ProductRepository.GetByCode(code);
-    return prod;
+    if (prod != null)
+        return Results.Ok(prod);
+    return Results.NotFound();
 });
 
 app.MapPut("/products", (Product product) =>
 {
     Product productSaved = ProductRepository.GetByCode(product.Code);
     productSaved.Name = product.Name;
+    return Results.Ok(productSaved);
 });
 
 app.MapDelete("/products/{code}", ([FromRoute] string code) =>
 {
     ProductRepository.DeleteProduct(code);
+    return Results.NoContent();
 });
 
 app.Run();
