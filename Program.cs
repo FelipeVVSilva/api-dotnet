@@ -22,10 +22,10 @@ app.MapGet("/getProducts", ([FromQuery] string dateStart, [FromQuery] string dat
     return dateStart + " - " + dateEnd;
 });
 
-app.MapGet("/getProducts/{code}", ([FromRoute] string code) =>
+/*app.MapGet("/getProducts/{code}", ([FromRoute] string code) =>
 {
     return code;
-});
+});*/
 
 /*app.MapGet("/header", ([FromHeader] string headerName) =>
 {
@@ -35,6 +35,16 @@ app.MapGet("/getProducts/{code}", ([FromRoute] string code) =>
 app.MapGet("/getNameByHeader", (HttpRequest request) =>
 {
     return request.Headers["headerName"].ToString();
+});
+
+app.MapPost("/saveProduct", (Product product) =>
+{
+    ProductRepository.Add(product);
+});
+
+app.MapGet("/getProductByCode/{code}", ([FromRoute] string code) =>
+{
+    return ProductRepository.GetByCode(code);
 });
 
 app.Run();
@@ -53,7 +63,13 @@ public static class ProductRepository
 
     public static Product GetByCode(string code)
     {
-        return Products.First(p => p.Code == code);
+        Product prod = Products.First(p => p.Code == code);
+        if(prod != null)
+        {
+            return Products.First(p => p.Code == code);
+        }
+
+        return null;
     }
 
 }
@@ -62,4 +78,9 @@ public class Product
 {
     public string Code { get; set; }
     public string Name { get; set; }
+
+    public Product(){
+        Code = null;
+        Name = null;
+    }
 }
