@@ -37,24 +37,24 @@ app.MapGet("/getNameByHeader", (HttpRequest request) =>
     return request.Headers["headerName"].ToString();
 });
 
-app.MapPost("/saveProduct", (Product product) =>
+app.MapPost("/products", (Product product) =>
 {
     ProductRepository.Add(product);
 });
 
-app.MapGet("/getProductByCode/{code}", ([FromRoute] string code) =>
+app.MapGet("/products/{code}", ([FromRoute] string code) =>
 {
     Product prod = ProductRepository.GetByCode(code);
     return prod;
 });
 
-app.MapPut("/updateProduct", (Product product) =>
+app.MapPut("/products", (Product product) =>
 {
     Product productSaved = ProductRepository.GetByCode(product.Code);
     productSaved.Name = product.Name;
 });
 
-app.MapDelete("/deleteProduct/{code}", ([FromRoute] string code) =>
+app.MapDelete("/products/{code}", ([FromRoute] string code) =>
 {
     ProductRepository.DeleteProduct(code);
 });
