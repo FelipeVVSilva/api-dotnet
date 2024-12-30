@@ -44,7 +44,14 @@ app.MapPost("/saveProduct", (Product product) =>
 
 app.MapGet("/getProductByCode/{code}", ([FromRoute] string code) =>
 {
-    return ProductRepository.GetByCode(code);
+    Product prod = ProductRepository.GetByCode(code);
+    return prod;
+});
+
+app.MapPut("/updateProduct", (Product product) =>
+{
+    Product productSaved = ProductRepository.GetByCode(product.Code);
+    productSaved.Name = product.Name;
 });
 
 app.Run();
@@ -55,7 +62,7 @@ public static class ProductRepository
 
     public static void Add(Product product)
     {
-        if(Products == null)
+        if (Products == null)
             Products = new List<Product>();
 
         Products.Add(product);
@@ -63,13 +70,7 @@ public static class ProductRepository
 
     public static Product GetByCode(string code)
     {
-        Product prod = Products.First(p => p.Code == code);
-        if(prod != null)
-        {
-            return Products.First(p => p.Code == code);
-        }
-
-        return null;
+        return Products.FirstOrDefault(p => p.Code == code);
     }
 
 }
