@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<ApplicationDbContext>();
+builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["Database:SqlServer"]);
 
 var app = builder.Build();
 
@@ -68,74 +68,3 @@ app.MapDelete("/products/{code}", ([FromRoute] string code) =>
 });
 
 app.Run();
-
-public static class ProductRepository
-{
-    public static List<Product> Products { get; set; } = new List<Product>();
-
-    public static void Add(Product product)
-    {
-        if (Products == null)
-            Products = new List<Product>();
-
-        Products.Add(product);
-    }
-
-    public static Product GetByCode(string code)
-    {
-        return Products.FirstOrDefault(p => p.Code == code);
-    }
-
-    public static void DeleteProduct(string code)
-    {
-        Product prod = GetByCode(code);
-        Products.Remove(prod);
-    }
-}
-
-public class Category
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-}
-
-public class Tag
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public int ProductId { get; set; }
-}
-    public class Product
-{
-    public int Id { get; set; }
-    public string Code { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    //Se tiver interrogação depois do tipo pode ser nulo
-    public int CategoryId { get; set; }
-    public Category Category { get; set; }
-    public List<Tag> Tags { get; set; } = new List<Tag>();
-
-}
-
-public class ApplicationDbContext : DbContext
-{
-    DbSet<Product> Products { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        builder.Entity<Product>().Property
-            (p => p.Description).HasMaxLength(500).IsRequired(false);
-
-        builder.Entity<Product>().Property
-            (p => p.Name).HasMaxLength(120).IsRequired();
-
-        builder.Entity<Product>().Property
-            (p => p.Code).HasMaxLength(20).IsRequired();
-    }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlServer(
-            "Server=localhost;Database=Products;User Id=sa;Password=@Sql2019;MultipleActiveResultSets=true;Encrypt=YES;TrustServerCertificate=YES"
-            );
-}
