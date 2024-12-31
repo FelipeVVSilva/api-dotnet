@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ApplicationDbContext>();
+
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
@@ -93,8 +95,10 @@ public static class ProductRepository
 
 public class Product
 {
+    public int Id { get; set; }
     public string Code { get; set; }
     public string Name { get; set; }
+    public string Description { get; set; }
 
 }
 
@@ -102,4 +106,20 @@ public class ApplicationDbContext : DbContext
 {
     DbSet<Product> Products { get; set; }
 
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<Product>().Property
+            (p => p.Description).HasMaxLength(500).IsRequired(false);
+
+        builder.Entity<Product>().Property
+            (p => p.Name).HasMaxLength(120).IsRequired();
+
+        builder.Entity<Product>().Property
+            (p => p.Code).HasMaxLength(20).IsRequired();
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlServer(
+            "Server=localhost;Database=Products;User Id=sa;Password=@Sql2019;MultipleActiveResultSets=true;Encrypt=YES;TrustServerCertificate=YES"
+            );
 }
