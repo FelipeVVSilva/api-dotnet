@@ -1,5 +1,6 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -68,7 +69,7 @@ app.Run();
 
 public static class ProductRepository
 {
-    public static List<Product> Products { get; set; }
+    public static List<Product> Products { get; set; } = new List<Product>();
 
     public static void Add(Product product)
     {
@@ -95,8 +96,10 @@ public class Product
     public string Code { get; set; }
     public string Name { get; set; }
 
-    public Product(){
-        Code = null;
-        Name = null;
-    }
+}
+
+public class ApplicationDbContext : DbContext
+{
+    DbSet<Product> Products { get; set; }
+
 }
